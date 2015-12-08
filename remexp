@@ -9,4 +9,4 @@ ssh $2 "mkdir -p $3/out/$FN"
 
 rsync -avzhre ssh --exclude 'out' --delete . $2:$3
 
-ssh $2 "cd $3 && chmod +x $1 && screen -d -m /bin/bash -c \"./$1 -o out/$FN > out/$FN/stdout.txt 2> out/$FN/stderr.txt\""
+ssh $2 "cd $3 && chmod +x $1 && screen -d -m /bin/bash -c \"./$1 out/$FN > out/$FN/stdout.txt 2> out/$FN/stderr.txt\""
