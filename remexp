@@ -1,11 +1,12 @@
 #!/bin/bash
-# first argument: file to run, second argument: remote, third argument: remote path
+# first argument: file to run, second argument: remote, third argument: remote path, fourth argument: description
 
 echo "running $1 on $2:$3"
+echo "description: $4"
 
 FN=$(date +%s)
 
-ssh $2 "mkdir -p $3/out/$FN"
+ssh $2 "mkdir -p $3/out/$FN && echo $4 > $3/out/$FN/description"
 
 rsync -avzhe ssh --exclude 'out' --exclude '.git' --exclude '.gitignore' --exclude-from '.gitignore' --delete . $2:$3
 
