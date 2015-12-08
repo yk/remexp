@@ -1,0 +1,8 @@
+#!/bin/bash
+# first argument: second argument: remote, third argument: remote path
+
+echo "getting from $1:$2"
+
+mkdir -p ./out
+
+rsync -avzhre ssh $1:$2/out .
