@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh $1 'NSESS=`screen -ls | wc -l` && if [ $NSESS -eq 2 ] ; then echo "No experiments running" ; else echo "WARNING! Experiments are running"; fi'
