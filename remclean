@@ -1,0 +1,8 @@
+#!/bin/bash
+# first argument: remote, second argument: remote path
+
+echo "cleaning $1:$2"
+
+ssh $1 "rm -rf $2"
+
+rsync -avzhe ssh --exclude 'out' --exclude '.git' --exclude '.gitignore' --exclude-from '.gitignore' --delete . $1:$2
